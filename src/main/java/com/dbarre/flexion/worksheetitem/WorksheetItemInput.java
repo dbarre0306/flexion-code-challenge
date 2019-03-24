@@ -6,7 +6,7 @@ import lombok.Data;
 public class WorksheetItemInput {
 
     private String inputTemperature;
-    private String inputUnits = "F";
-    private String targetUnits = "F";
+    private String inputUnits = "Fahrenheit";
+    private String targetUnits = "Fahrenheit";
     private String studentAnswer;
 }
