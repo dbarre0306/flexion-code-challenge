@@ -5,9 +5,9 @@ import lombok.ToString;
 
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public final class Kelvin extends Temperature {
+public final class Rankine extends Temperature {
 
-    public Kelvin(double value) {
+    public Rankine(double value) {
         super(value);
     }
 
@@ -16,8 +16,8 @@ public final class Kelvin extends Temperature {
         switch (targetUnits) {
             case FAHRENHEIT: return toFahrenheit();
             case CELSIUS: return toCelsius();
-            case KELVIN: return this;
-            case RANKINE: return toRankine();
+            case KELVIN: return toKelvin();
+            case RANKINE: return this;
             default:
                 // should  never get here unless new units are added
                 throw new RuntimeException();
@@ -25,14 +25,14 @@ public final class Kelvin extends Temperature {
     }
 
     private Temperature toFahrenheit() {
-        return new Fahrenheit((value - CELSIUS_TO_KELVIN) * 9.0 / 5.0 + 32);
+        return new Fahrenheit(value - FAHRENHEIT_TO_RANKINE);
     }
 
     private Temperature toCelsius() {
-        return new Celsius(value - CELSIUS_TO_KELVIN);
+        return new Celsius((value - 32 - FAHRENHEIT_TO_RANKINE) * 5.0 / 9.0);
     }
 
-    private Temperature toRankine() {
-        return new Rankine(value * 1.8);
+    private Temperature toKelvin() {
+        return new Kelvin(value * 5.0 / 9.0);
     }
 }

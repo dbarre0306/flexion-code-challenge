@@ -34,4 +34,13 @@ public class CelsiusSpec {
         // expect
         assertThat(celsius.convert(TemperatureUnits.KELVIN), IsEqual.equalTo(new Kelvin(273.15)));
     }
+
+    @Test
+    public void shouldConvertToRankine() {
+        // given
+        Celsius celsius = new Celsius(0);
+
+        // expect
+        assertThat(celsius.convert(TemperatureUnits.RANKINE), IsEqual.equalTo(new Rankine(491.67)));
+    }
 }

@@ -33,4 +33,13 @@ public class KelvinSpec {
         // expect
         assertThat(kelvin.convert(TemperatureUnits.KELVIN), IsEqual.equalTo(kelvin));
     }
+
+    @Test
+    public void shouldConvertToRankine() {
+        // given
+        Kelvin kelvin = new Kelvin(10);
+
+        // expect
+        assertThat(kelvin.convert(TemperatureUnits.RANKINE), IsEqual.equalTo(new Rankine(18)));
+    }
 }

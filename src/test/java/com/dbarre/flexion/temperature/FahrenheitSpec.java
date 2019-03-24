@@ -33,4 +33,13 @@ public class FahrenheitSpec {
         // expect
         assertThat(fahrenheit.convert(TemperatureUnits.KELVIN), IsEqual.equalTo(new Kelvin(273.15)));
     }
+
+    @Test
+    public void shouldConvertToRankine() {
+        // given
+        Fahrenheit fahrenheit = new Fahrenheit(32);
+
+        // expect
+        assertThat(fahrenheit.convert(TemperatureUnits.RANKINE), IsEqual.equalTo(new Rankine(491.67)));
+    }
 }

@@ -10,6 +10,7 @@ import lombok.ToString;
 public abstract class Temperature {
 
     protected static final double CELSIUS_TO_KELVIN = 273.15;
+    protected static final double FAHRENHEIT_TO_RANKINE = 459.67;
 
     protected double value;
 

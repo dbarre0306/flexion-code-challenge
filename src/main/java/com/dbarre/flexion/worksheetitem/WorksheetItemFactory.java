@@ -29,6 +29,7 @@ public class WorksheetItemFactory {
             case "Fahrenheit": return TemperatureUnits.FAHRENHEIT;
             case "Celsius": return TemperatureUnits.CELSIUS;
             case "Kelvin": return TemperatureUnits.KELVIN;
+            case "Rankine": return TemperatureUnits.RANKINE;
             default:
                 throw new WorksheetItemInputException();
         }

@@ -18,6 +18,7 @@ public final class Celsius extends Temperature {
             case FAHRENHEIT: return toFahrenheit();
             case CELSIUS: return this;
             case KELVIN: return toKelvin();
+            case RANKINE: return toRankine();
             default:
                 // should  never get here unless new units are added
                 throw new RuntimeException();
@@ -25,10 +26,18 @@ public final class Celsius extends Temperature {
     }
 
     private Temperature toFahrenheit() {
-        return new Fahrenheit((value * 9.0 / 5.0) + 32);
+        return new Fahrenheit(toFahrenheitValue());
     }
 
     private Temperature toKelvin() {
         return new Kelvin(value + CELSIUS_TO_KELVIN);
+    }
+
+    private Temperature toRankine() {
+        return new Rankine(toFahrenheitValue() + FAHRENHEIT_TO_RANKINE);
+    }
+
+    private double toFahrenheitValue() {
+        return (value * 9.0 / 5.0) + 32;
     }
 }
