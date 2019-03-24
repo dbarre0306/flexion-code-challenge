@@ -10,6 +10,7 @@ public class TemperatureFactory {
             case FAHRENHEIT: return new Fahrenheit(temperature);
             case CELSIUS: return new Celsius(temperature);
             case KELVIN: return new Kelvin(temperature);
+            case RANKINE: return new Rankine(temperature);
             default:
                 throw new RuntimeException();
         }
