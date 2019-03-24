@@ -16,13 +16,22 @@ public final class Fahrenheit extends Temperature {
         switch (targetUnits) {
             case FAHRENHEIT: return this;
             case CELSIUS: return toCelsius();
+            case KELVIN: return toKelvin();
             default:
                 // should  never get here unless new units are added
                 throw new RuntimeException();
         }
     }
 
-    private Celsius toCelsius() {
-        return new Celsius((value - 32) * 5.0 / 9.0);
+    private Temperature toCelsius() {
+        return new Celsius(celsiusToFahrenheit());
+    }
+
+    private Temperature toKelvin() {
+        return new Kelvin(celsiusToFahrenheit() + CELSIUS_TO_KELVIN);
+    }
+
+    private double celsiusToFahrenheit() {
+        return (value - 32) * 5.0 / 9.0;
     }
 }

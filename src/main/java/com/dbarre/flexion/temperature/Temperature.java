@@ -9,6 +9,8 @@ import lombok.ToString;
 @ToString
 public abstract class Temperature {
 
+    protected static final double CELSIUS_TO_KELVIN = 273.15;
+
     protected double value;
 
     public abstract Temperature convert(TemperatureUnits targetUnits);

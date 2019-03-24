@@ -28,6 +28,7 @@ public class WorksheetItemFactory {
         switch (units) {
             case "Fahrenheit": return TemperatureUnits.FAHRENHEIT;
             case "Celsius": return TemperatureUnits.CELSIUS;
+            case "Kelvin": return TemperatureUnits.KELVIN;
             default:
                 throw new WorksheetItemInputException();
         }
