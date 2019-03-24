@@ -27,6 +27,7 @@ public class WorksheetItemFactory {
     private TemperatureUnits toTemperatureUnits(String units) {
         switch (units) {
             case "Fahrenheit": return TemperatureUnits.FAHRENHEIT;
+            case "Celsius": return TemperatureUnits.CELSIUS;
             default:
                 throw new WorksheetItemInputException();
         }

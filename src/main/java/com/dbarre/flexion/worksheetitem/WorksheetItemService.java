@@ -3,8 +3,10 @@ package com.dbarre.flexion.worksheetitem;
 import com.dbarre.flexion.temperature.Temperature;
 import com.dbarre.flexion.temperature.TemperatureFactory;
 import com.dbarre.flexion.util.NumericUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+@Slf4j
 @Component
 public class WorksheetItemService {
 
@@ -15,6 +17,8 @@ public class WorksheetItemService {
     }
 
     public boolean isCorrect(final WorksheetItem worksheetItem) {
+        log.info("IsCorrect: " + worksheetItem);
+
         return NumericUtil.isNumeric(worksheetItem.getStudentAnswer())
                 && isCorrectAnswer(worksheetItem);
     }
@@ -24,11 +28,17 @@ public class WorksheetItemService {
                 worksheetItem.getInputTemperature(),
                 worksheetItem.getInputUnits());
 
+        log.info("inputTemperature: " + inputTemperature);
+
         Temperature authoritativeTemperature = inputTemperature.convert(worksheetItem.getTargetUnits());
+
+        log.info("authoritativeTemperature: " + authoritativeTemperature);
 
         Temperature studentTemperature = this.temperatureFactory.toTemperature(
                 Double.valueOf(worksheetItem.getStudentAnswer()),
                 worksheetItem.getTargetUnits());
+
+        log.info("studentTemperature: " + studentTemperature);
 
         return authoritativeTemperature.isNearEqualTo(studentTemperature);
     }

@@ -1,10 +1,12 @@
 package com.dbarre.flexion.worksheetitem;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+@Slf4j
 @Controller
 public class WorksheetItemController {
 
@@ -32,9 +34,14 @@ public class WorksheetItemController {
     @PostMapping("/worksheetItem")
     public String submitWorksheetItem(@ModelAttribute WorksheetItemInput worksheetItemInput, ModelMap model) {
 
+        log.info("Submit worksheet item: " + worksheetItemInput.toString());
+
         String output = getOutput(worksheetItemInput);
         model.addAttribute("worksheetItem", worksheetItemInput);
         model.addAttribute("output", output.toString().toLowerCase());
+
+        log.info("Worksheet item output: " + output);
+
         return "result";
     }
 

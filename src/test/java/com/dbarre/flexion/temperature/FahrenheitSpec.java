@@ -8,14 +8,20 @@ import static org.junit.Assert.assertThat;
 public class FahrenheitSpec {
 
     @Test
-    public void shouldConvertFahrenheitToFahrenheit() {
+    public void shouldConvertToFahrenheit() {
         // given
         Fahrenheit fahrenheit = new Fahrenheit(56.7);
 
-        // when
-        Temperature temperature = fahrenheit.convert(TemperatureUnits.FAHRENHEIT);
+        // expect
+        assertThat(fahrenheit.convert(TemperatureUnits.FAHRENHEIT), IsEqual.equalTo(fahrenheit));
+    }
 
-        // then
-        assertThat(temperature, IsEqual.equalTo(fahrenheit));
+    @Test
+    public void shouldConvertToCelsius() {
+        // given
+        Fahrenheit fahrenheit = new Fahrenheit(32);
+
+        // expect
+        assertThat(fahrenheit.convert(TemperatureUnits.CELSIUS), IsEqual.equalTo(new Celsius(0)));
     }
 }

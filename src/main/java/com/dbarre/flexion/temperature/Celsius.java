@@ -2,27 +2,28 @@ package com.dbarre.flexion.temperature;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.springframework.web.context.request.FacesRequestAttributes;
 
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public final class Fahrenheit extends Temperature {
+public final class Celsius extends Temperature {
 
-    public Fahrenheit(double value) {
+    public Celsius(double value) {
         super(value);
     }
 
     @Override
     public Temperature convert(TemperatureUnits targetUnits) {
         switch (targetUnits) {
-            case FAHRENHEIT: return this;
-            case CELSIUS: return toCelsius();
+            case FAHRENHEIT: return toFahrenheit();
+            case CELSIUS: return this;
             default:
                 // should  never get here unless new units are added
                 throw new RuntimeException();
         }
     }
 
-    private Celsius toCelsius() {
-        return new Celsius((value - 32) * 5.0 / 9.0);
+    private Fahrenheit toFahrenheit() {
+        return new Fahrenheit((value * 9.0 / 5.0) + 32);
     }
 }
