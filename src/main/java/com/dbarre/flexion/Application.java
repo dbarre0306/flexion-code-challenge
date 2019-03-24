@@ -1,4 +1,4 @@
-package com.dbarre.temperature;
+package com.dbarre.flexion;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
