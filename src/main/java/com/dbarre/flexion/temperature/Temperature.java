@@ -9,7 +9,7 @@ import lombok.ToString;
 @ToString
 public abstract class Temperature {
 
-    private double value;
+    protected double value;
 
     public abstract Temperature convert(TemperatureUnits targetUnits);
 
