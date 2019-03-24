@@ -1,4 +1,4 @@
-# flexion-code-challenge
+# Flexion Code Challenge
 
 ## Production Deployment
 
@@ -20,4 +20,8 @@ Use the following link to access the deployed application:
 http://ec2-34-215-6-75.us-west-2.compute.amazonaws.com:8080/
 
 
+## TODO
 
+Some tech debt was incurred in the conversions from one unit to another.  Too many common constants and computations. 
+
+And the **WorksheetItemFactorySpec** should be improved to avoid a *problem*.  Can you find it?
