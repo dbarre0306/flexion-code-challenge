@@ -34,6 +34,13 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.16</version>
+            <scope>provided</scope>
+        </dependency>
+
         <!-- needed to render html templates in /resources/templates -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

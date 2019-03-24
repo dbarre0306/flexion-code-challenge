@@ -1,9 +1,8 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Heat and Temperature</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
     <!-- Include Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -11,16 +10,37 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <style type="text/css">
+      td { padding: 5px; }
+    </style>
 </head>
 <body>
-<div class="container-fluid">
-    <h3 class="display-3">Hello Molly 3</h3>
-
-    <div id="contents-main">
-        <div id="contents">
-        </div>
-    </div>
-</div>
-
+<h1 align="center">Heat and Temperature</h1>
+<form action="#" th:action="@{/worksheetItem}" th:object="${worksheetItem}" method="post">
+    <table align="center">
+        <tr>
+        <td align="right">Input Temperature: </td><td><input type="text" th:field="*{inputTemperature}" /></td>
+        </tr>
+        <tr>
+        <td align="right">Input Units:</td>
+          <td><select th:field="*{inputUnits}">
+                 <option th:value="'Fahrenheit'" th:text="Fahrenheit" />
+          </select></td>
+        </tr>
+        <tr>
+        <td align="right">Target Units:</td>
+        <td><select th:field="*{targetUnits}">
+               <option th:value="'Fahrenheit'" th:text="Fahrenheit" />
+        </select></td>
+        </tr>
+        <tr>
+        <td align="right">Student Answer:</td><td><input type="text" th:field="*{studentAnswer}" /></td>
+        </tr>
+        <tr>
+        <td colspan="2" align="center"><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></td>
+        </tr>
+    </table>
+</form>
 </body>
 </html>
