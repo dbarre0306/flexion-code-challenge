@@ -24,4 +24,13 @@ public class FahrenheitSpec {
         // expect
         assertThat(fahrenheit.convert(TemperatureUnits.CELSIUS), IsEqual.equalTo(new Celsius(0)));
     }
+
+    @Test
+    public void shouldConvertToKelvin() {
+        // given
+        Fahrenheit fahrenheit = new Fahrenheit(32);
+
+        // expect
+        assertThat(fahrenheit.convert(TemperatureUnits.KELVIN), IsEqual.equalTo(new Kelvin(273.15)));
+    }
 }

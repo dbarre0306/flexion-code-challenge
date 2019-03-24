@@ -9,6 +9,7 @@ public class TemperatureFactory {
         switch (temperatureUnits) {
             case FAHRENHEIT: return new Fahrenheit(temperature);
             case CELSIUS: return new Celsius(temperature);
+            case KELVIN: return new Kelvin(temperature);
             default:
                 throw new RuntimeException();
         }

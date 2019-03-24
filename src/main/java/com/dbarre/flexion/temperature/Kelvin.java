@@ -2,13 +2,12 @@ package com.dbarre.flexion.temperature;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.springframework.web.context.request.FacesRequestAttributes;
 
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public final class Celsius extends Temperature {
+public final class Kelvin extends Temperature {
 
-    public Celsius(double value) {
+    public Kelvin(double value) {
         super(value);
     }
 
@@ -16,8 +15,8 @@ public final class Celsius extends Temperature {
     public Temperature convert(TemperatureUnits targetUnits) {
         switch (targetUnits) {
             case FAHRENHEIT: return toFahrenheit();
-            case CELSIUS: return this;
-            case KELVIN: return toKelvin();
+            case CELSIUS: return toCelsius();
+            case KELVIN: return this;
             default:
                 // should  never get here unless new units are added
                 throw new RuntimeException();
@@ -25,10 +24,10 @@ public final class Celsius extends Temperature {
     }
 
     private Temperature toFahrenheit() {
-        return new Fahrenheit((value * 9.0 / 5.0) + 32);
+        return new Fahrenheit((value - CELSIUS_TO_KELVIN) * 9.0 / 5.0 + 32);
     }
 
-    private Temperature toKelvin() {
-        return new Kelvin(value + CELSIUS_TO_KELVIN);
+    private Temperature toCelsius() {
+        return new Celsius(value - CELSIUS_TO_KELVIN);
     }
 }
